@@ -27,7 +27,7 @@ This would use the jmx file provided as a param input.
 
 ## Deploy Argo to AWS and execute JMeter Task as a Argo Workflow
 
-**Prequisites:**
+**Perquisites:**
 - Install kubectl
 - Install eksctl
 - Install Argo Cli
@@ -93,6 +93,8 @@ Above are not the real keys but kept here for example.
   You can access it using the following url
   https://localhost:2746/
 
+10. Execute Argo Workflow tasks
+    argo submit -n argo ./argo-workflows/execute-jmeter-argo-task.yaml
 
 
 

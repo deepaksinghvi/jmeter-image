@@ -52,13 +52,14 @@ Above are not the real keys but kept here for example.
   kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.7/install.yaml
   ```
 6. Create Role and Get Token to login to Argo UI
-   ```
-   kubectl create role argo --verb=list,update --resource=workflows.argoproj.io
+  ```
+  kubectl create role argo --verb=list,update --resource=workflows.argoproj.io
   ```
 
   ```
   kubectl create sa argo
   ```
+
   ```
   kubectl create rolebinding argo —role=argo —serviceaccount=argo:argo
   ```
@@ -74,6 +75,7 @@ Above are not the real keys but kept here for example.
   type: kubernetes.io/service-account-token
   EOF
   ```
+
   Finally get the token:
   ```
   ARGO_TOKEN="Bearer $(kubectl get secret argo.service-account-token -o=jsonpath='{.data.token}' | base64 —decode)“
@@ -82,7 +84,7 @@ Above are not the real keys but kept here for example.
 8. Use the complete thing as follows for token during login to argo ui.
 
   ```
-  Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6Il9VbDA1YThJR3dtbkTHISININCVALIDTOEKNRDBsd0FNSzZqOVl6RzdBVFAyeGsifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImFyZ28uc2VydmljZS1hY2NvdW50LXRva2VuIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFyZ28iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiIxZDZiYjVhNi1kM2JmLTQ5MTHISININCVALIDTOEKN2RkYWRmMDI3ZjciLCJzdWIiOiJzeXN0ZW06c2VydmTHISININCVALIDTOEKNmYXVsdDphcmdvIn0.nKHXHEe92ZUzmIkcGWRaIZ3zh-iZSySpMG1Im092JBT69ee2LFuSQnrm59IW4AP8XMKpGdlfMaPcGGtbhikCZEaeu_mdXVkVc81ybyueRaNKGZZBGbu1T_WYb3F0Ms8oIIfiGV2POeR-BQ4-nUbB-Lf66C3hNdmmyd9RBYSEvmy7JnsBEel-qCb2DbWInKnghOdC-fyThws4RpdeY2Paqfw2frhkSCU7JEYomTgSB3M542Tneb_H7ZFL8jI8wKJanncOhEdccsqnTHISININCVALIDTOEKN0fOV4RKk8Yt4RaKpok26SHkaTQ0v6dbXhSq9RKJB7trd5oY5iaY_w
+  Bearer <YOUR TOKEN>
   ```
 9 Port forward Argo-Server to use the Argo UI locally
   ```
